@@ -68,9 +68,20 @@ int con = 2;
 
 Console.Write($"{a} -> ");
 
-while (con <= a)
+if (a > 0)
 {
-    Console.Write($" {con} ");
-    con += 2;
+    while (con <= a)
+    {
+        Console.Write($" {con} ");
+        con += 2;
+    }
 }
-
+else
+{
+    con = 0;
+    while (con >= a)
+    {
+        Console.Write($" {con} ");
+        con -= 2;
+    }
+}
