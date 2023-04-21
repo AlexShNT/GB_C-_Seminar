@@ -68,7 +68,7 @@ int con = 2;
 
 Console.Write($"{a} ->");
 
-if (a > 0)
+if (a > 0)git 
 {
     while (con <= a)
     {
