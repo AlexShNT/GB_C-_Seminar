@@ -115,8 +115,9 @@ double[] GenArrD(int size, int minVal, int maxVal)
     double[] newArr = new double[size];
 
     for (int i = 0; i < size; i++)
-    {        
-        newArr[i] = new Random().NextDouble() * (maxVal - minVal) + minVal;
+    {     
+        double rndTmp = new Random().NextDouble() * (maxVal - minVal) + minVal;   
+        newArr[i] = Math.Round(rndTmp, 2);
     }
 
     return newArr;
@@ -168,7 +169,7 @@ double maxArr = MaxArrD(myArr);
 
 Console.WriteLine("");
 
-Console.Write($" min {minArr} max {maxArr} -> {maxArr - minArr}");
+Console.Write($" min {minArr} max {maxArr} -> {Math.Round(maxArr - minArr, 2)}");
 
 
 
