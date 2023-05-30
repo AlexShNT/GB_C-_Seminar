@@ -169,7 +169,7 @@ double maxArr = MaxArrD(myArr);
 
 Console.WriteLine("");
 
-Console.Write($" min {minArr} max {maxArr} -> {Math.Round(maxArr - minArr, 2)}");
+Console.Write($" min {minArr} max {maxArr} -> {Math.Round(maxArr - minArr,}");
 
 
 
