@@ -202,13 +202,11 @@ int GenNum(int[] arrCh, int maxV)
 
     for (int i= 0; i < maxV; i ++)
     {
-
         if (arrCh[i] == tmp) 
         {
             GenNum(arrCh, maxV);
             f = false;
         }
-
     }
     
     if (f) 
@@ -333,13 +331,7 @@ Print3DArr(myArr3D);
 // Console.Write("Input number of colums: ");
 // int sizeColumns = Convert.ToInt32(Console.ReadLine());
 
-// Console.Write("Input min value of array:");
-// int minV = Convert.ToInt32(Console.ReadLine());
-
-// Console.Write("Input max value of array:");
-// int maxV = Convert.ToInt32(Console.ReadLine());
-
-// int[,] myArr = Gen2DArr(sizeRows, sizeColumns, minV, maxV);
+// int[,] myArr = Gen2DArr(sizeRows, sizeColumns, 0, 0);
 
 // Console.WriteLine();
 
