@@ -33,23 +33,23 @@ void Print2DArr(int[,] array)
 
 }
 
-Console.Write("Input number of rows: ");
-int sizeRows = Convert.ToInt32(Console.ReadLine());
+// Console.Write("Input number of rows: ");
+// int sizeRows = Convert.ToInt32(Console.ReadLine());
 
-Console.Write("Input number of colums: ");
-int sizeColumns = Convert.ToInt32(Console.ReadLine());
+// Console.Write("Input number of colums: ");
+// int sizeColumns = Convert.ToInt32(Console.ReadLine());
 
-Console.Write("Input min value of array:");
-int minV = Convert.ToInt32(Console.ReadLine());
+// Console.Write("Input min value of array:");
+// int minV = Convert.ToInt32(Console.ReadLine());
 
-Console.Write("Input max value of array:");
-int maxV = Convert.ToInt32(Console.ReadLine());
+// Console.Write("Input max value of array:");
+// int maxV = Convert.ToInt32(Console.ReadLine());
 
-int[,] myArr = Gen2DArr(sizeRows, sizeColumns, minV, maxV);
+// int[,] myArr = Gen2DArr(sizeRows, sizeColumns, minV, maxV);
 
-Console.WriteLine();
+// Console.WriteLine();
 
-Print2DArr(myArr);
+// Print2DArr(myArr);
 
 /*
 Задача 54: Задайте двумерный массив. Напишите программу, которая упорядочит по убыванию элементы каждой строки двумерного массива.
@@ -195,6 +195,84 @@ Print2DArr(myArr);
 26(1,0,1) 55(1,1,1)
 */
 
+int GenNum(int[] arrCh, int maxV)
+{
+    int tmp = new Random().Next(10, 100);
+    bool f = true;
+
+    for (int i= 0; i < maxV; i ++)
+    {
+
+        if (arrCh[i] == tmp) 
+        {
+            GenNum(arrCh, maxV);
+            f = false;
+        }
+
+    }
+    
+    if (f) 
+    {
+        arrCh[maxV] = tmp;
+        return tmp;
+    }
+    else 
+        return arrCh[maxV];
+
+
+}
+
+int[,,] Fill3DArr(int x, int y, int z)
+{
+    int[,,] array =  new int[x, y, z];
+    
+    int[] tmpArr = new  int [array.GetLength(0) * array.GetLength(1) * array.GetLength(2)];
+
+    int intTmp = 0;
+
+    for (int r = 0; r < array.GetLength(0); r ++)
+    {
+        for (int c = 0; c < array.GetLength(1); c ++)
+        {
+            for (int d = 0; d < array.GetLength(2); d ++)
+            {
+                array[r, c, d] = GenNum(tmpArr, intTmp);
+                intTmp++;
+            }
+        }
+    }
+        
+    return array;
+}
+
+void Print3DArr(int[,,] array)
+{
+    for (int r = 0; r < array.GetLength(0); r ++)
+    {
+        for (int c = 0; c < array.GetLength(1); c ++)
+        {
+            for (int d = 0; d < array.GetLength(2); d ++)
+            {
+                Console.Write($"{array[r, c, d]}({r}, {c}, {d}) ");
+                
+            }
+            Console.WriteLine();
+        }
+    }   
+}
+
+Console.Write("Input number of X: ");
+int x = Convert.ToInt32(Console.ReadLine());
+
+Console.Write("Input number of Y: ");
+int y = Convert.ToInt32(Console.ReadLine());
+
+Console.Write("Input number of Z: ");
+int z = Convert.ToInt32(Console.ReadLine());
+
+int[,,] myArr3D = Fill3DArr(x, y, z);
+
+Print3DArr(myArr3D);
 
 
 /*
@@ -205,3 +283,76 @@ Print2DArr(myArr);
 11 16 15 06
 10 09 08 07
 */
+
+// int[,] FillArrSnail(int[,] array, int row, int col, string s, int st)
+// {
+//     if (st > array.GetLength(0) * array.GetLength(1)) return array;
+//     array[row, col] = st;
+
+//     if (s == "r")
+//     {
+//         if ((col + 1 < array.GetLength(1)) && (array[row, col + 1] == 0)) 
+//         {            
+//             FillArrSnail(array, row, col + 1, "r", st + 1);
+//         }
+//         else  
+//             FillArrSnail(array, row + 1, col, "d", st + 1);
+//     }
+
+//     if (s == "d")
+//     {
+//         if ((row + 1 < array.GetLength(0)) && (array[row + 1, col] == 0))  
+//             FillArrSnail(array, row + 1, col, "d", st + 1);
+//         else  
+//             FillArrSnail(array, row, col- 1, "l", st + 1);
+//     }
+
+//     if (s == "l")
+//     {
+//         if ((col - 1 >= 0) && (array[row, col - 1] == 0))  
+//             FillArrSnail(array, row, col - 1, "l", st + 1);
+//         else  
+//             FillArrSnail(array, row - 1, col, "u", st + 1);
+//     }
+
+//         if (s == "u")
+//     {
+//         if ((row - 1 >= 0) && (array[row-1, col] == 0))  
+//             FillArrSnail(array, row - 1, col, "u", st + 1);
+//         else  
+//             FillArrSnail(array, row, col + 1, "r", st + 1);
+//     }
+
+//     return array;
+// }
+
+
+// Console.Write("Input number of rows: ");
+// int sizeRows = Convert.ToInt32(Console.ReadLine());
+
+// Console.Write("Input number of colums: ");
+// int sizeColumns = Convert.ToInt32(Console.ReadLine());
+
+// Console.Write("Input min value of array:");
+// int minV = Convert.ToInt32(Console.ReadLine());
+
+// Console.Write("Input max value of array:");
+// int maxV = Convert.ToInt32(Console.ReadLine());
+
+// int[,] myArr = Gen2DArr(sizeRows, sizeColumns, minV, maxV);
+
+// Console.WriteLine();
+
+// Print2DArr(myArr);
+
+
+
+// myArr = FillArrSnail(myArr, 0, 0,"r", 1);
+
+// // myArr = FillArrSnail(myArr, myArr.GetLength(0) - 1, myArr.GetLength(1) - 1,"l", 1);
+
+// // myArr = FillArrSnail(myArr, 2, 2,"d", 1);
+
+// Console.WriteLine();   
+
+// Print2DArr(myArr);
